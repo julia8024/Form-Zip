@@ -5,6 +5,8 @@ import Color from "@/app/shared/Color";
 import AlignCenter from "@/app/components/AlignCenter";
 import { DateTime } from "@/app/shared/types/commonProps";
 import { formatDateTimeToStr } from "@/app/functions/Date/formatDateTime";
+import { VerticalDivider } from "@/app/shared/styles/commonStyles";
+import TimePicker from "./TimePicker";
 
 
 interface DateTimeGroupProps {
@@ -36,6 +38,8 @@ const DateTimeGroup: React.FC<DateTimeGroupProps> = ({
     <Container>
       <AlignCenter>
         <Calendar value={value} onDateSelect={handleSelect} />
+        <VerticalDivider height={"280px"} margin={"0 0 0 10px"} color={Color.brightGray}/>
+        <TimePicker value={value} onTimeSelect={handleSelect} />
       </AlignCenter>
     </Container>
   );
