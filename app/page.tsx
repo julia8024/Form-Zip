@@ -4,12 +4,14 @@ import TextField from "./components/forms/fields/TextField";
 import Dropdown from "./components/forms/fields/DropDown";
 import styled from "styled-components";
 import Color from "./shared/Color";
+import DateTimeField from "./components/forms/fields/DateTimeField";
 
 interface Data {
   title: string,
   description: string,
   num: number,
   status: string,
+  editDate: string,
 }
 
 export default function Home() {
@@ -19,6 +21,7 @@ export default function Home() {
     description: "",
     num: 0,
     status: "",
+    editDate: "",
   });
 
   // input
@@ -42,10 +45,9 @@ export default function Home() {
           placeholder={"제목 입력"}
           isEnabled={true}
         />
-
       </SubContainer>
       <SubContainer>
-      <LabelText>여러 줄 텍스트필드</LabelText>
+        <LabelText>여러 줄 텍스트필드</LabelText>
         <TextField
           name={"description"}
           isMultiLine={true}
@@ -56,7 +58,7 @@ export default function Home() {
         />
       </SubContainer>
       <SubContainer>
-      <LabelText>숫자 필드</LabelText>
+        <LabelText>숫자 필드</LabelText>
         <TextField
           name={"num"}
           type={"number"}
@@ -68,7 +70,7 @@ export default function Home() {
       </SubContainer>
 
       <SubContainer>
-      <LabelText>드롭다운</LabelText>
+        <LabelText>드롭다운</LabelText>
         <Dropdown
           name={"status"}
           value={data.status}
@@ -76,6 +78,13 @@ export default function Home() {
           onChange={setInput}
           placeholder={"선택"}
           isEnabled={true}
+        />
+        <LabelText>날짜 시간 선택 필드</LabelText>
+        <DateTimeField
+          value={data.editDate}
+          name={"editDate"}
+          onChange={setInput}
+          isEnabled={false}
         />
       </SubContainer>
 
