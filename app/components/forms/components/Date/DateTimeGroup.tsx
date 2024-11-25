@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Calendar from "./Calendar";
 import styled from "styled-components";
 import Color from "@/app/shared/Color";
+import Calendar from "./Calendar";
+import TimePicker from "./TimePicker";
 import AlignCenter from "@/app/components/AlignCenter";
 import { DateTime } from "@/app/shared/types/commonProps";
 import { formatDateTimeToStr } from "@/app/functions/Date/formatDateTime";
 import { VerticalDivider } from "@/app/shared/styles/commonStyles";
-import TimePicker from "./TimePicker";
+import isFlexible from "@/app/functions/isFlexible";
 
 
 interface DateTimeGroupProps {
@@ -24,7 +25,7 @@ const DateTimeGroup: React.FC<DateTimeGroupProps> = ({
 
   useEffect(() => {
     if (!!dateTime && !!dateTime.year) {
-        onSelect(formatDateTimeToStr(dateTime));
+      onSelect(formatDateTimeToStr(dateTime));
     }
 
   }, [dateTime])
@@ -36,9 +37,9 @@ const DateTimeGroup: React.FC<DateTimeGroupProps> = ({
 
   return (
     <Container>
-      <AlignCenter>
+      <AlignCenter isFlex={!isFlexible(380)}>
         <Calendar value={value} onDateSelect={handleSelect} />
-        <VerticalDivider height={"280px"} margin={"0 0 0 10px"} color={Color.brightGray}/>
+        {isFlexible(400) && <VerticalDivider height={"280px"} margin={"0 0 0 10px"} color={Color.brightGray} />}
         <TimePicker value={value} onTimeSelect={handleSelect} />
       </AlignCenter>
     </Container>
